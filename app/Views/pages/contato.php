@@ -35,6 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Pré-preenche quando vem de um botão (ex.: /contato?servico=Site%20institucional ou ?sistema=portal-do-condominio).
 $preForm = [];
 if (isset($_GET['servico']) && in_array($_GET['servico'], conteudo('opcoes_servico'), true)) $preForm['servico'] = $_GET['servico'];
+// Vindo do portfólio (?interesse=Nome do item): escolhe o serviço do grupo e já escreve o interesse na mensagem.
+if (isset($_GET['interesse'])) {
+    $grupoServico = ['sites' => 'Projeto personalizado', 'automacoes' => 'Integrações e automação', 'sistemas' => 'Sistema web sob medida', 'suporte' => 'Manutenção e evolução'];
+    foreach (conteudo('portfolio') as $g) foreach ($g['itens'] as $it) if ($it['titulo'] === $_GET['interesse']) $preForm = ['servico' => $grupoServico[$g['id']] ?? 'Outro', 'mensagem' => 'Tenho interesse em: '.$it['titulo'].'.'];
+}
 if (isset($_GET['sistema'])) { $st = db()->prepare('SELECT nome FROM sistemas WHERE slug = ? AND ativo = 1'); $st->execute([(string)$_GET['sistema']]); if ($n = $st->fetchColumn()) $preForm = ['servico' => 'Um sistema do catálogo', 'mensagem' => 'Tenho interesse no sistema '.$n.'.']; }
 ?>
 <section class="cab-pub">

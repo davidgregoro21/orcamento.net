@@ -15,6 +15,8 @@ ALTER TABLE projetos ADD COLUMN futuras TEXT NULL;
 ALTER TABLE projetos ADD COLUMN url_publicacao VARCHAR(255) NULL;
 ALTER TABLE projetos ADD COLUMN permitir_embed TINYINT(1) NOT NULL DEFAULT 1;
 ALTER TABLE projetos ADD COLUMN atualizado_em DATETIME NULL;
+ALTER TABLE projetos ADD COLUMN portfolio TINYINT(1) NOT NULL DEFAULT 0;
+ALTER TABLE projetos ADD COLUMN portfolio_resumo VARCHAR(255) NULL;
 
 -- Cada usuário cliente vira um cliente (empresa) e os projetos liberados para ele passam a ser desse cliente.
 INSERT INTO clientes (nome, email, ativo, criado_em)

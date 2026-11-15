@@ -16,7 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'chamada' => mb_substr(post_text('chamada'), 0, 200), 'descricao' => mb_substr(post_text('descricao'), 0, 5000),
             'funcionalidades' => mb_substr(post_text('funcionalidades'), 0, 5000), 'futuras' => mb_substr(post_text('futuras'), 0, 5000),
             'url_previa' => post_text('url_previa'), 'url_publicacao' => post_text('url_publicacao'), 'url_proposta' => post_text('url_proposta'),
-            'permitir_embed' => post_text('permitir_embed') === '1' ? 1 : 0, 'ativo' => post_text('ativo') === '1' ? 1 : 0, 'ordem' => (int)post_text('ordem'),
+            'permitir_embed' => post_text('permitir_embed') === '1' ? 1 : 0,
+            'portfolio' => post_text('portfolio') === '1' ? 1 : 0, 'portfolio_resumo' => mb_substr(post_text('portfolio_resumo'), 0, 255), 'ativo' => post_text('ativo') === '1' ? 1 : 0, 'ordem' => (int)post_text('ordem'),
         ];
         // url_previa aceita também um site hospedado no próprio portal: sites/nome-do-site/
         if (preg_match('#^/?sites/[a-z0-9-]+/?$#', $d['url_previa'])) $d['url_previa'] = rtrim(ltrim($d['url_previa'], '/'), '/').'/';
@@ -91,7 +92,9 @@ $img = $p ? url_imagem($p['imagem']) : null;
     <div class="campo"><span>Opções</span>
       <label class="opcao"><input type="checkbox" name="ativo" value="1"<?= (int)($p['ativo'] ?? 1) ? ' checked' : '' ?>> Liberado para o cliente ver</label>
       <label class="opcao"><input type="checkbox" name="permitir_embed" value="1"<?= (int)($p['permitir_embed'] ?? 1) ? ' checked' : '' ?>> Mostrar o site dentro do portal (iframe)</label>
+      <label class="opcao"><input type="checkbox" name="portfolio" value="1"<?= (int)($p['portfolio'] ?? 0) ? ' checked' : '' ?>> Mostrar no portfólio público (orcamento.net/portfolio)</label>
     </div>
+    <label class="campo campo--inteiro"><span>Resumo para o portfólio</span><input name="portfolio_resumo" maxlength="255" value="<?=$v('portfolio_resumo')?>" placeholder="Ex.: Site institucional com blog, formulário de proposta e SEO local."><small>Aparece para qualquer visitante. O link de demonstração nunca é mostrado: só o endereço publicado, quando houver. Combine com o cliente antes de marcar.</small></label>
   </div>
   <div class="botoes"><button class="btn btn--primario">Salvar projeto</button><a class="btn btn--linha" href="<?=url_pagina('admin_projetos')?>">Voltar</a></div>
 </form>

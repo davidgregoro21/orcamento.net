@@ -12,7 +12,7 @@ $destaques = db()->query('SELECT * FROM sistemas WHERE ativo = 1 ORDER BY destaq
       <p class="lp-hero__sub">Do primeiro site à gestão completa da sua empresa. Desenvolvemos ferramentas digitais para simplificar, organizar e automatizar o seu negócio, com proposta clara e acompanhamento em uma área exclusiva.</p>
       <div class="botoes">
         <a class="btn btn--primario btn--g" href="<?=url_pagina('contato')?>">Quero meu orçamento grátis <?=icone('seta')?></a>
-        <a class="btn btn--vazado btn--g" href="<?=url_pagina('sistemas')?>">Conhecer os sistemas</a>
+        <a class="btn btn--vazado btn--g" href="<?=url_pagina('portfolio')?>">Ver o portfólio</a>
       </div>
       <ul class="lp-hero__checks">
         <li><?=icone('check')?> Resposta em 1 dia útil</li>
@@ -53,13 +53,26 @@ $destaques = db()->query('SELECT * FROM sistemas WHERE ativo = 1 ORDER BY destaq
   </div>
 </section>
 
-<!-- ============ SOLUÇÕES ============ -->
-<section class="pub-secao" id="solucoes">
+<!-- ============ PORTFÓLIO DE SERVIÇOS ============ -->
+<section class="pub-secao" id="portfolio">
   <div class="container">
-    <div class="pub-cab"><span class="sobre">O que desenvolvemos</span><h2>Do primeiro site à gestão completa da sua empresa</h2><p>Projetos simples ou plataformas empresariais complexas, sempre sob medida.</p></div>
-    <ul class="solucoes">
-      <?php foreach (conteudo('solucoes') as $so): ?><li><span class="ico-box"><?=icone($so['icone'])?></span><?=e($so['titulo'])?></li><?php endforeach; ?>
-    </ul>
+    <div class="pub-cab"><span class="sobre">Portfólio de serviços</span><h2>Sites, sistemas e automações para qualquer tipo de negócio</h2><p>Do primeiro site à empresa funcionando no automático. Escolha uma área para ver tudo o que fazemos.</p></div>
+    <div class="pf-areas">
+      <?php foreach (conteudo('portfolio') as $g): ?>
+        <a class="pf-area" href="<?=url_pagina('portfolio')?>#<?=e($g['id'])?>">
+          <span class="ico-box"><?=icone($g['icone'])?></span>
+          <h3><?=e($g['titulo'])?></h3>
+          <p><?=e($g['texto'])?></p>
+          <ul class="mini-lista"><?php foreach (array_slice($g['itens'], 0, 4) as $it): ?><li><?=icone('check')?> <?=e($it['titulo'])?></li><?php endforeach; ?></ul>
+          <span class="link-seta">Ver <?=count($g['itens'])?> serviços <?=icone('seta')?></span>
+        </a>
+      <?php endforeach; ?>
+    </div>
+    <?php if ($trabalhos = projetos_portfolio(3)): ?>
+      <div class="pub-cab pf-cab-trabalhos"><span class="sobre">Trabalhos realizados</span><h2>Alguns projetos entregues</h2></div>
+      <div class="pf-trabalhos pf-trabalhos--claro"><?php foreach ($trabalhos as $t) require __DIR__.'/../partials/cartao_trabalho.php'; ?></div>
+    <?php endif; ?>
+    <div class="centro botoes botoes--centro"><a class="btn btn--primario" href="<?=url_pagina('portfolio')?>">Ver o portfólio completo <?=icone('seta')?></a></div>
   </div>
 </section>
 
@@ -129,7 +142,7 @@ $destaques = db()->query('SELECT * FROM sistemas WHERE ativo = 1 ORDER BY destaq
           <li><?=icone('check')?> Prévia funcionando no celular e no computador</li>
           <li><?=icone('check')?> Ajustes até você aprovar</li>
         </ul>
-        <a class="btn btn--primario" href="<?=url_pagina('login')?>"><?=icone('portal')?> Já sou cliente: entrar no portal</a>
+        <a class="btn btn--primario" href="<?=url_pagina('login')?>"><?=icone('portal')?> Já sou cliente: entrar</a>
       </div>
       <div class="lp-portal__visual" aria-hidden="true">
         <div class="navegador"><div class="navegador__barra"><i></i><i></i><i></i><span>orcamento.net/portal</span></div>

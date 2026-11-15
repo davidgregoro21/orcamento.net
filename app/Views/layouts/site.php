@@ -1,7 +1,7 @@
 <?php
 $nomeSite = (string)cfg('app_name');
 $titulo = $tituloPagina ? $tituloPagina.' | '.$nomeSite : $nomeSite.' – Sites, sistemas e suporte com preço fechado e prévia antes de ir ao ar';
-$menuPub = ['inicio' => 'Início', 'sistemas' => 'Soluções', 'servicos' => 'Planos', 'sobre' => 'Sobre', 'contato' => 'Contato'];
+$menuPub = ['inicio' => 'Início', 'portfolio' => 'Portfólio', 'sistemas' => 'Soluções', 'servicos' => 'Planos', 'sobre' => 'Sobre', 'contato' => 'Contato'];
 $ativoPub = $page === 'sistema' ? 'sistemas' : $page;
 ?><!doctype html>
 <html lang="pt-BR">
@@ -26,10 +26,10 @@ $ativoPub = $page === 'sistema' ? 'sistemas' : $page;
     <a href="<?=url_pagina('inicio')?>" aria-label="<?=e($nomeSite)?> – início"><?php require __DIR__.'/../partials/logo.php'; ?></a>
     <nav class="pub-menu" id="pub-menu" aria-label="Menu">
       <?php foreach ($menuPub as $pg => $rotulo): ?><a href="<?=url_pagina($pg)?>"<?= $ativoPub === $pg ? ' class="ativo" aria-current="page"' : '' ?>><?=e($rotulo)?></a><?php endforeach; ?>
-      <a class="pub-menu__login" href="<?=url_pagina(is_logged() ? pagina_inicial() : 'login')?>"><?=icone('portal')?> <?= is_logged() ? 'Minha área' : 'Área do cliente' ?></a>
+      <a class="pub-menu__login" title="Acesso de clientes e administração" href="<?=url_pagina(is_logged() ? pagina_inicial() : 'login')?>"><?=icone('portal')?> <?= is_logged() ? (is_admin() ? 'Painel' : 'Minha área') : 'Entrar' ?></a>
     </nav>
     <div class="pub-topo__acoes">
-      <a class="pub-topo__login" href="<?=url_pagina(is_logged() ? pagina_inicial() : 'login')?>"><?=icone('portal')?> <?= is_logged() ? 'Minha área' : 'Área do cliente' ?></a>
+      <a class="pub-topo__login" title="Acesso de clientes e administração" href="<?=url_pagina(is_logged() ? pagina_inicial() : 'login')?>"><?=icone('portal')?> <?= is_logged() ? (is_admin() ? 'Painel' : 'Minha área') : 'Entrar' ?></a>
       <a class="btn btn--primario btn--p" href="<?=url_pagina('contato')?>">Pedir orçamento</a>
       <button class="pub-topo__menu" type="button" aria-controls="pub-menu" aria-expanded="false" aria-label="Abrir menu"><?=icone('menu', 'ico ico--abrir')?><?=icone('fechar', 'ico ico--fechar')?></button>
     </div>
@@ -46,7 +46,7 @@ $ativoPub = $page === 'sistema' ? 'sistemas' : $page;
       <p>Sites, sistemas web e suporte em tecnologia com preço fechado e prévia antes de ir ao ar.</p>
     </div>
     <div><h4>Soluções</h4><ul><?php try { foreach (db()->query('SELECT slug, nome FROM sistemas WHERE ativo = 1 ORDER BY destaque DESC, ordem, nome LIMIT 5')->fetchAll() as $s): ?><li><a href="<?=url_pagina('sistema', ['s' => $s['slug']])?>"><?=e($s['nome'])?></a></li><?php endforeach; } catch (Throwable $e) {} ?></ul></div>
-    <div><h4>Navegação</h4><ul><?php foreach ($menuPub as $pg => $rotulo): ?><li><a href="<?=url_pagina($pg)?>"><?=e($rotulo)?></a></li><?php endforeach; ?><li><a href="<?=url_pagina('login')?>">Área do cliente</a></li></ul></div>
+    <div><h4>Navegação</h4><ul><?php foreach ($menuPub as $pg => $rotulo): ?><li><a href="<?=url_pagina($pg)?>"><?=e($rotulo)?></a></li><?php endforeach; ?><li><a href="<?=url_pagina('login')?>">Entrar (clientes e administração)</a></li></ul></div>
     <div><h4>Contato</h4><ul>
       <li><a href="mailto:<?=e(contato('email'))?>"><?=e(contato('email'))?></a></li>
       <?php if (contato('whatsapp')): ?><li><a href="<?=e(link_whatsapp('Olá! Quero um orçamento.'))?>" target="_blank" rel="noopener">WhatsApp <?=e(contato('whatsapp'))?></a></li><?php endif; ?>

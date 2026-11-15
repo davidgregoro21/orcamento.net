@@ -38,6 +38,42 @@ return [
         ['icone' => 'engrenagem', 'titulo' => 'Integrações e automação', 'texto' => 'Menos trabalho manual, menos erro.', 'itens' => ['Planilhas e APIs', 'WhatsApp e e-mail automáticos', 'Relatórios gerados sozinhos'], 'a_partir' => '', 'prazo' => 'sob consulta'],
     ],
 
+    // Portfólio de serviços (página /portfolio e resumo na página inicial). Edite à vontade: cada grupo vira um bloco.
+    'portfolio' => [
+        ['id' => 'sites', 'icone' => 'site', 'titulo' => 'Sites e presença digital', 'texto' => 'Sua empresa encontrada no Google e pronta para receber contatos.', 'itens' => [
+            ['icone' => 'site', 'titulo' => 'Site institucional', 'texto' => 'Páginas da empresa, serviços, equipe e contato, no celular e no computador.'],
+            ['icone' => 'foguete', 'titulo' => 'Landing page de campanha', 'texto' => 'Página única para anúncio, lançamento ou captação de clientes.'],
+            ['icone' => 'caixa', 'titulo' => 'Loja virtual e catálogo', 'texto' => 'Produtos com fotos, carrinho ou pedido direto pelo WhatsApp.'],
+            ['icone' => 'documento', 'titulo' => 'Blog e conteúdo', 'texto' => 'Artigos que trazem visitas do Google, com painel para publicar.'],
+            ['icone' => 'local', 'titulo' => 'SEO e Google Meu Negócio', 'texto' => 'Título, descrição, mapa do site e dados de empresa local.'],
+            ['icone' => 'ferramenta', 'titulo' => 'Reforma de site antigo', 'texto' => 'Layout novo sem perder os endereços que já estão no Google.'],
+        ]],
+        ['id' => 'automacoes', 'icone' => 'engrenagem', 'titulo' => 'Automações', 'texto' => 'Tarefas repetitivas feitas sozinhas, sem erro e a qualquer hora.', 'itens' => [
+            ['icone' => 'whatsapp', 'titulo' => 'Atendimento automático no WhatsApp', 'texto' => 'Respostas, menu de opções e encaminhamento para a pessoa certa.'],
+            ['icone' => 'email', 'titulo' => 'E-mails e avisos automáticos', 'texto' => 'Confirmações, lembretes, cobranças e boas-vindas disparados no momento certo.'],
+            ['icone' => 'calendario', 'titulo' => 'Agendamento online', 'texto' => 'O cliente escolhe o horário e recebe a confirmação e o lembrete.'],
+            ['icone' => 'cifrao', 'titulo' => 'Cobranças e financeiro', 'texto' => 'Boletos, Pix e lembretes de vencimento, com baixa automática.'],
+            ['icone' => 'grafico', 'titulo' => 'Relatórios que se montam sozinhos', 'texto' => 'Números do mês em PDF ou planilha, enviados por e-mail.'],
+            ['icone' => 'api', 'titulo' => 'Integração entre sistemas', 'texto' => 'Planilhas, ERPs, CRMs e APIs conversando sem copiar e colar.'],
+            ['icone' => 'documento', 'titulo' => 'Formulários e documentos', 'texto' => 'Formulários que viram contrato, proposta ou ficha em PDF.'],
+            ['icone' => 'ia', 'titulo' => 'Ferramentas com inteligência artificial', 'texto' => 'Resumo de documentos, triagem de pedidos e respostas sugeridas.'],
+        ]],
+        ['id' => 'sistemas', 'icone' => 'sistema', 'titulo' => 'Sistemas e portais', 'texto' => 'A rotina da empresa organizada em um só lugar, com login e permissões.', 'itens' => [
+            ['icone' => 'painel', 'titulo' => 'Sistema administrativo sob medida', 'texto' => 'Cadastros, painéis e relatórios com os campos que o seu negócio usa.'],
+            ['icone' => 'portal', 'titulo' => 'Área do cliente com login', 'texto' => 'Documentos, avisos, solicitações e histórico para cada cliente.'],
+            ['icone' => 'predio', 'titulo' => 'Portal para condomínios', 'texto' => 'Comunicados, atas, reservas e chamados para síndicos e moradores.'],
+            ['icone' => 'pessoas', 'titulo' => 'Controle de clientes (CRM)', 'texto' => 'Contatos, negociações, tarefas e próximos passos de cada cliente.'],
+            ['icone' => 'mensagem', 'titulo' => 'Chamados e protocolos', 'texto' => 'Cada pedido com número, responsável, prazo e histórico.'],
+            ['icone' => 'grafico', 'titulo' => 'Dashboards gerenciais', 'texto' => 'Indicadores da empresa atualizados em tempo real.'],
+        ]],
+        ['id' => 'suporte', 'icone' => 'nuvem', 'titulo' => 'Infraestrutura e suporte', 'texto' => 'Tudo funcionando, seguro e com backup, sem você se preocupar.', 'itens' => [
+            ['icone' => 'nuvem', 'titulo' => 'Hospedagem e domínio', 'texto' => 'Servidor, domínio e HTTPS configurados do jeito certo.'],
+            ['icone' => 'email', 'titulo' => 'E-mail profissional', 'texto' => 'voce@suaempresa.com.br no celular e no computador.'],
+            ['icone' => 'escudo', 'titulo' => 'Segurança e LGPD', 'texto' => 'Proteção contra spam e invasões, política de privacidade e consentimento.'],
+            ['icone' => 'ferramenta', 'titulo' => 'Manutenção mensal', 'texto' => 'Atualizações, backup, monitoramento e pequenos ajustes.'],
+        ]],
+    ],
+
     // Opções de escolha (valores em branco = "Sob consulta"; preencha 'preco' quando definir).
     'pacotes' => [
         ['nome' => 'Essencial', 'preco' => '', 'detalhe' => '', 'para' => 'Sites simples, institucionais e páginas de apresentação', 'destaque' => false,

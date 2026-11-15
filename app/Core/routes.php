@@ -8,6 +8,7 @@
 return [
  // --- Site público ---
  'inicio'=>['pages/inicio.php', 'publico', 'site', null],
+ 'portfolio'=>['pages/portfolio.php', 'publico', 'site', 'Portfólio de serviços'],
  'sistemas'=>['pages/sistemas.php', 'publico', 'site', 'Soluções'],
  'sistema'=>['pages/sistema.php', 'publico', 'site', 'Solução'],
  'servicos'=>['pages/servicos.php', 'publico', 'site', 'Serviços e planos'],

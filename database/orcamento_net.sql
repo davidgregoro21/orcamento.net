@@ -58,6 +58,8 @@ CREATE TABLE IF NOT EXISTS projetos (
   url_proposta VARCHAR(255) NULL,
   imagem VARCHAR(160) NULL,                                -- prévia visual (public/uploads/projetos ou assets/img)
   permitir_embed TINYINT(1) NOT NULL DEFAULT 1,            -- mostrar dentro do portal (iframe)
+  portfolio TINYINT(1) NOT NULL DEFAULT 0,                 -- aparece na página pública Portfólio
+  portfolio_resumo VARCHAR(255) NULL,                      -- texto curto exibido no portfólio
   ativo TINYINT(1) NOT NULL DEFAULT 1,
   ordem INT NOT NULL DEFAULT 0,
   criado_em DATETIME NOT NULL,

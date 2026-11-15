@@ -197,3 +197,14 @@ function icone(string $nome, string $classe = 'ico'): string {
     ];
     return '<svg class="'.e($classe).'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'.($p[$nome] ?? '').'</svg>';
 }
+
+/** Projetos marcados para o portfólio público. Nunca expõe o link de demonstração: só o endereço publicado. */
+function projetos_portfolio(int $limite = 0): array {
+    try {
+        $sql = 'SELECT p.id, p.nome, p.tipo, p.situacao, p.portfolio_resumo, p.descricao, p.funcionalidades, p.imagem, p.url_publicacao,
+                       c.nome AS cliente_nome, c.logo AS cliente_logo, c.localizacao AS cliente_local
+                FROM projetos p LEFT JOIN clientes c ON c.id = p.cliente_id
+                WHERE p.portfolio = 1 ORDER BY p.ordem, p.criado_em DESC'.($limite > 0 ? ' LIMIT '.(int)$limite : '');
+        return db()->query($sql)->fetchAll();
+    } catch (Throwable $e) { return []; }
+}

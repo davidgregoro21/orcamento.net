@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $emailAntigo = (string)($_SESSION['login_email'] ?? ''); unset($_SESSION['login_email']);
 ?>
 <h1 class="guest__titulo">Área exclusiva</h1>
-<p class="guest__sub">Entre com o e-mail e a senha que você recebeu.</p>
+<p class="guest__sub">Clientes e administração: entre com o e-mail e a senha que você recebeu. Cada acesso abre a sua própria área.</p>
 <form method="post" action="<?=url_pagina('login')?>" class="form">
   <?=csrf_field()?>
   <label class="campo"><span>E-mail</span><input type="email" name="email" required autocomplete="username" autofocus value="<?=e($emailAntigo)?>"></label>
