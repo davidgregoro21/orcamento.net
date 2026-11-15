@@ -1,0 +1,8 @@
+# Imagens enviadas pelo painel: sem listagem e sem execução de scripts.
+Options -Indexes
+<FilesMatch "\.(php|phtml|phar|php[0-9]*|cgi|pl|py|sh|htaccess)$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>

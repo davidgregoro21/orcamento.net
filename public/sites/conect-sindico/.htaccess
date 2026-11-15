@@ -1,0 +1,46 @@
+# Segurança: sem listagem de pastas e sem acesso a arquivos ocultos.
+Options -Indexes -MultiViews
+ServerSignature Off
+<FilesMatch "^\.(?!htaccess$)">
+  Require all denied
+</FilesMatch>
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  # X-Frame-Options é enviado pelo PHP (cabecalhos_seguranca), que libera o iframe do portal orcamento.net.
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header unset X-Powered-By
+</IfModule>
+
+# Desempenho: compressão e cache dos arquivos estáticos (CSS/JS vão com ?v=data, então podem ficar em cache).
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml application/xml
+</IfModule>
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+</IfModule>
+
+# Este site roda dentro do orcamento.net em /sites/conect-sindico/. As regras abaixo valem só para esta pasta.
+# Endereços amigáveis: /servicos, /blog/seguro-predial ... (o index.php?page=... continua funcionando).
+# Para desligar, coloque 'urls_amigaveis' => false em config/config.local.php.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^sitemap\.xml$ index.php?page=sitemap [L]
+  # Links do site antigo (/blog/detalhes/slug) redirecionam para o endereço novo.
+  RewriteRule ^blog/detalhes/([a-z0-9-]+)/?$ index.php?page=blog_antigo&slug=$1 [QSA,L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^blog/([a-z0-9-]+)/?$ index.php?page=artigo&slug=$1 [QSA,L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^(.+)/$
+  RewriteRule ^[a-z0-9-]+/$ %1 [R=301,L,QSA]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^([a-z0-9-]+)$ index.php?page=$1 [QSA,L]
+</IfModule>

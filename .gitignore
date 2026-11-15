@@ -1,0 +1,18 @@
+# Configuração do servidor (senha do banco, e-mail, chave) — nunca versionar
+config/config.local.php
+sites_clientes/*/config/config.local.php
+
+# Dados gerados pelo sistema (banco de teste, sessões, limites, e-mails, arquivos enviados)
+storage/*
+!storage/.htaccess
+sites_clientes/*/storage/*
+!sites_clientes/*/storage/.htaccess
+public/uploads/clientes/*
+public/uploads/projetos/*
+!public/uploads/**/.gitkeep
+*.sqlite
+backups/
+
+# Ferramentas só para uso local
+public/resgate_admin.php
+public/sites/*/importar_antigo.php

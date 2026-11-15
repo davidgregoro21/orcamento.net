@@ -1,0 +1,24 @@
+# orcamento.net — proteção da raiz do projeto.
+# O portal deve ser servido a partir de public/ (na hospedagem, aponte o domínio para a pasta public).
+# Se a hospedagem não permitir, este arquivo encaminha tudo para public/ e bloqueia código, configuração e logs.
+Options -Indexes -MultiViews
+ServerSignature Off
+
+<FilesMatch "(^\.|\.(md|sql|bat|sh|log|bak|lock|yml|yaml|dist|ini|env)$)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Pastas internas respondem 404, sem revelar que existem.
+  RewriteRule ^(\.git|\.github|app|config|database|storage|backups|sites_clientes)(/|$) - [R=404,L]
+  # Encaminha o restante para public/
+  RewriteCond %{REQUEST_URI} !/public/
+  RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
