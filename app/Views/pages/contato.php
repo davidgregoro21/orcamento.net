@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $html = '<p><b>'.e($d['nome']).'</b>'.($d['empresa'] ? ' · '.e($d['empresa']) : '').'</p><p>'.e($d['servico']).($d['prazo'] ? ' · '.e($d['prazo']) : '').'</p>'
           .'<p>'.e($d['email']).' · '.e($d['telefone']).'</p>'.($d['mensagem'] ? '<p style="white-space:pre-wrap">'.nl2br(e($d['mensagem'])).'</p>' : '');
     enviar_email((string)((cfg('mail') ?? [])['destino'] ?? contato('email')), 'Novo pedido de orçamento – '.$d['servico'], email_modelo('Novo pedido de orçamento', $html), $d['email']);
-    flash('sucesso', 'Pedido recebido, '.explode(' ', $d['nome'])[0].'! Retornaremos em até um dia útil.');
+    flash('sucesso', 'Pedido recebido, '.explode(' ', $d['nome'])[0].'! Recebemos seu pedido e vamos entrar em contato.');
     redirect('contato');
 }
 // Pré-preenche quando vem de um botão (ex.: /contato?servico=Site%20institucional ou ?sistema=portal-do-condominio).
@@ -43,20 +43,22 @@ if (isset($_GET['interesse'])) {
 if (isset($_GET['sistema'])) { $st = db()->prepare('SELECT nome FROM sistemas WHERE slug = ? AND ativo = 1'); $st->execute([(string)$_GET['sistema']]); if ($n = $st->fetchColumn()) $preForm = ['servico' => 'Um sistema do catálogo', 'mensagem' => 'Tenho interesse no sistema '.$n.'.']; }
 ?>
 <section class="cab-pub">
-  <div class="container"><span class="sobre sobre--claro">Contato</span><h1>Peça seu orçamento</h1><p>Conte o que você precisa. Respondemos em até um dia útil, sem compromisso.</p></div>
+  <div class="container"><span class="sobre sobre--claro">Contato</span><h1>Peça seu orçamento</h1><p>Conte o que você precisa. O orçamento é grátis e sem compromisso.</p></div>
 </section>
 <section class="pub-secao" id="orcamento">
   <div class="container pub-form">
     <div class="contato-lado">
-      <h2>Fale com a gente</h2>
-      <p class="mudo">Prefere conversar antes? Use o canal que for mais prático para você.</p>
+      <h2>Peça pelo formulário</h2>
+      <p class="mudo">Seu pedido chega direto para nós. Quanto mais detalhes você contar, mais certeira fica a proposta.</p>
       <div class="contato-canais">
+        <div class="contato-canal"><span class="ico-box"><?=icone('documento')?></span><span><b>1. Conte o que precisa</b>Site, sistema, automação ou suporte: pode ser só uma ideia.</span></div>
+        <div class="contato-canal"><span class="ico-box"><?=icone('mensagem')?></span><span><b>2. Conversamos</b>Entramos em contato para entender o seu negócio.</span></div>
+        <div class="contato-canal"><span class="ico-box"><?=icone('cifrao')?></span><span><b>3. Proposta por escrito</b>Escopo e valores claros, sem compromisso.</span></div>
         <?php if (contato('whatsapp')): ?><a class="contato-canal" href="<?=e(link_whatsapp('Olá! Quero um orçamento.'))?>" target="_blank" rel="noopener"><span class="ico-box ico-box--verde"><?=icone('whatsapp')?></span><span><b>WhatsApp</b><?=e(contato('whatsapp'))?></span></a><?php endif; ?>
-        <a class="contato-canal" href="mailto:<?=e(contato('email'))?>"><span class="ico-box"><?=icone('email')?></span><span><b>E-mail</b><?=e(contato('email'))?></span></a>
-        <?php if (contato('cidade')): ?><div class="contato-canal"><span class="ico-box"><?=icone('local')?></span><span><b>Atendimento</b><?=e(contato('cidade'))?> e todo o Brasil, online</span></div><?php endif; ?>
+        <?php if (contato('cidade')): ?><div class="contato-canal"><span class="ico-box"><?=icone('local')?></span><span><b>De <?=e(contato('cidade'))?></b>Atendimento online para todo o Brasil.</span></div><?php endif; ?>
       </div>
       <ul class="mini-lista mini-lista--grande">
-        <li><?=icone('check')?> Proposta por escrito, com escopo e prazo</li>
+        <li><?=icone('check')?> Proposta por escrito, com escopo e valores</li>
         <li><?=icone('check')?> Valores definidos para o seu projeto</li>
         <li><?=icone('check')?> Seus dados protegidos (LGPD)</li>
       </ul>
@@ -70,7 +72,7 @@ if (isset($_GET['sistema'])) { $st = db()->prepare('SELECT nome FROM sistemas WH
     <div>
       <span class="sobre">Dúvidas frequentes</span>
       <h2>Perguntas antes de começar</h2>
-      <p class="mudo">Não achou sua dúvida? Escreva no formulário abaixo que respondemos.</p>
+      <p class="mudo">Não achou sua dúvida? Escreva no formulário acima que respondemos.</p>
     </div>
     <div class="faq">
       <?php foreach (conteudo('faq') as $i => $f): ?>

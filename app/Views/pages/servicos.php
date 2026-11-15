@@ -4,7 +4,7 @@
 <!-- ============ SERVIÇOS ============ -->
 <section class="pub-secao" id="servicos">
   <div class="container">
-    <div class="pub-cab"><span class="sobre">Serviços</span><h2>Tudo o que sua empresa precisa em tecnologia</h2><p>Cada projeto recebe uma proposta por escrito, com escopo, prazo e valores definidos para o seu caso.</p></div>
+    <div class="pub-cab"><span class="sobre">Serviços</span><h2>Tudo o que sua empresa precisa em tecnologia</h2><p>Cada projeto recebe uma proposta por escrito, com escopo e valores definidos para o seu caso.</p></div>
     <div class="grade-3">
       <?php foreach (conteudo('servicos') as $s): ?>
         <article class="servico-card">
@@ -12,7 +12,7 @@
           <h3><?=e($s['titulo'])?></h3>
           <p><?=e($s['texto'])?></p>
           <ul class="mini-lista"><?php foreach ($s['itens'] as $it): ?><li><?=icone('check')?> <?=e($it)?></li><?php endforeach; ?></ul>
-          <div class="servico-card__rodape"><span><?= $s['a_partir'] !== '' ? 'a partir de <b>'.e($s['a_partir']).'</b>' : '<b>Sob consulta</b>' ?></span><span><?=icone('relogio')?> <?=e($s['prazo'])?></span></div>
+          <div class="servico-card__rodape"><span><?= $s['a_partir'] !== '' ? 'a partir de <b>'.e($s['a_partir']).'</b>' : '<b>Sob consulta</b>' ?></span><?php if ($s['prazo'] !== ''): ?><span><?=icone('relogio')?> <?=e($s['prazo'])?></span><?php endif; ?></div>
         </article>
       <?php endforeach; ?>
     </div>
@@ -22,7 +22,7 @@
 <!-- ============ PACOTES ============ -->
 <section class="pub-secao pub-secao--escura" id="pacotes">
   <div class="container">
-    <div class="pub-cab pub-cab--claro"><span class="sobre">Planos</span><h2>Essencial, Profissional e Empresarial</h2><p>Pontos de partida para evoluir de um site simples a um sistema completo. Todas com layout exclusivo, HTTPS, LGPD e 90 dias de garantia.</p></div>
+    <div class="pub-cab pub-cab--claro"><span class="sobre">Planos</span><h2>Essencial, Profissional e Empresarial</h2><p>Pontos de partida para evoluir de um site simples a um sistema completo. Todas com layout exclusivo, HTTPS, LGPD e garantia de correções.</p></div>
     <div class="pacotes">
       <?php foreach (conteudo('pacotes') as $pc): ?>
         <article class="pacote<?= $pc['destaque'] ? ' pacote--destaque' : '' ?>">

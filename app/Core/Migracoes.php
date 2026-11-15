@@ -4,7 +4,7 @@
  * Roda sozinha no primeiro acesso depois de enviar uma versão nova (bootstrap.php) e na instalação.
  * Nunca apaga dados: só cria tabelas/colunas que faltam e copia informações para a estrutura nova.
  */
-const VERSAO_BANCO = '5';
+const VERSAO_BANCO = '6';
 
 /** Converte o SQL do MySQL para SQLite (usado só quando 'driver' => 'sqlite', para testes). */
 function sql_para_sqlite(string $sql): string {
@@ -96,6 +96,12 @@ function aplicar_migracoes(bool $instalacaoNova = false): array {
         adicionar_coluna('projetos', 'portfolio_resumo', 'VARCHAR(255) NULL');
         registrar_migracao('005_portfolio');
         $feito[] = 'Projetos podem ser exibidos no portfólio público.';
+    }
+    if (!migracao_aplicada('006_pedidos_anotacoes')) {
+        // Pedidos de orçamento: anotações internas e data da última mudança.
+        adicionar_coluna('pedidos_orcamento', 'anotacoes', 'TEXT NULL');
+        adicionar_coluna('pedidos_orcamento', 'atualizado_em', 'DATETIME NULL');
+        registrar_migracao('006_pedidos_anotacoes');
     }
     @file_put_contents(__DIR__.'/../../storage/.versao_banco', VERSAO_BANCO);
     return $feito;

@@ -19,7 +19,7 @@ return [
         'responsavel' => '',                    // PREENCHER: seu nome
         'email' => 'contato@orcamento.net',
         'whatsapp' => '',                       // PREENCHER: ex. (54) 99999-9999
-        'cidade' => 'Caxias do Sul/RS',
+        'cidade' => 'Nova Santa Rita/RS',
     ],
     // E-mail da Hostinger (hPanel → E-mails). Crie a caixa nao-responda@orcamento.net e coloque a senha.
     'mail' => [

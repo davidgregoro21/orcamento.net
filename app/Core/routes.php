@@ -43,6 +43,6 @@ return [
  'admin_arquivos'=>['admin/arquivos.php', 'admin', 'app', 'Arquivos'],
  'admin_usuarios'=>['admin/usuarios.php', 'admin', 'app', 'Usuários'],
  'admin_atividades'=>['admin/atividades.php', 'admin', 'app', 'Atividades'],
- 'admin_pedidos'=>['admin/pedidos.php', 'admin', 'app', 'Interessados'],
+ 'admin_pedidos'=>['admin/pedidos.php', 'admin', 'app', 'Pedidos de orçamento'],
  'admin_catalogo'=>['admin/catalogo.php', 'admin', 'app', 'Catálogo de soluções'],
 ];

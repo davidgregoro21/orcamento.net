@@ -290,3 +290,26 @@
 .selo--aviso { background: #fff4e0; color: #9a6400; border: 1px solid #f5d7a1; font-weight: 700; }
 .visualizador__titulo { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-right: auto; }
 .visualizador__titulo b { font-size: 1.02rem; }
+
+/* Pedidos de orçamento */
+.selo--novo { background: var(--verde-claro); color: #116b40; }
+.ped-resumo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
+.ped-resumo .cartao { padding: 16px 18px; display: flex; flex-direction: column; gap: 2px; }
+.ped-resumo b { font-size: 1.7rem; line-height: 1.1; color: var(--noite); }
+.ped-resumo span { font-size: .85rem; color: var(--cinza-2); }
+.ped-busca { display: flex; gap: 8px; margin-bottom: 14px; }
+.ped-busca input { flex: 1; font: inherit; padding: 10px 14px; border: 1.5px solid var(--linha); border-radius: var(--raio-p); background: #fff; }
+.pedido--novo { border-left: 4px solid var(--verde); }
+.pedido--perdido { opacity: .7; }
+.pedido__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.pedido__tag { display: inline-flex; align-items: center; gap: 5px; font-size: .82rem; font-weight: 600; background: var(--azul-claro); color: var(--azul-escuro); padding: 3px 10px; border-radius: 999px; }
+.pedido__tag .ico { width: 14px; height: 14px; }
+.pedido__contato { align-items: center; gap: 10px; }
+.pedido__dados { display: inline-flex; flex-wrap: wrap; gap: 14px; margin-left: 6px; font-size: .9rem; }
+.pedido__notas { margin-top: 14px; border-top: 1px dashed var(--linha); padding-top: 10px; }
+.pedido__notas summary { cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: var(--cinza); font-size: .92rem; }
+.pedido__notas form { display: grid; gap: 8px; margin-top: 10px; justify-items: start; }
+.pedido__notas textarea { width: 100%; font: inherit; padding: 10px 12px; border: 1.5px solid var(--linha); border-radius: var(--raio-p); }
+.pedido__rodape { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; }
+.pedido__rodape .link-perigo { display: inline-flex; align-items: center; gap: 5px; }
+@media (max-width: 900px) { .ped-resumo { grid-template-columns: repeat(2, 1fr); } .ped-busca { flex-wrap: wrap; } }

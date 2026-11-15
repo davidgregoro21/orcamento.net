@@ -32,7 +32,7 @@ if (!in_array($cat, $categorias, true)) $cat = '';
     <div class="pub-cab"><span class="sobre">Como funciona</span><h2>Do catálogo ao seu sistema no ar</h2></div>
     <ol class="linha-tempo linha-tempo--4">
       <li><span class="linha-tempo__ico"><?=icone('sistema')?></span><b class="linha-tempo__num">Passo 1</b><h3>Escolha</h3><p>Você escolhe o sistema mais próximo do que precisa.</p></li>
-      <li><span class="linha-tempo__ico"><?=icone('documento')?></span><b class="linha-tempo__num">Passo 2</b><h3>Proposta</h3><p>Listamos as adaptações, o prazo e o valor por escrito.</p></li>
+      <li><span class="linha-tempo__ico"><?=icone('documento')?></span><b class="linha-tempo__num">Passo 2</b><h3>Proposta</h3><p>Listamos as adaptações e o valor por escrito.</p></li>
       <li><span class="linha-tempo__ico"><?=icone('olho')?></span><b class="linha-tempo__num">Passo 3</b><h3>Prévia</h3><p>Você testa o seu sistema no portal com login próprio.</p></li>
       <li><span class="linha-tempo__ico"><?=icone('estrela')?></span><b class="linha-tempo__num">Passo 4</b><h3>No ar</h3><p>Publicamos, treinamos a equipe e damos suporte.</p></li>
     </ol>

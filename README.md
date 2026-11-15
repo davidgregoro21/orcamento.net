@@ -16,7 +16,7 @@ solicitações, arquivos, acessos; criar login, redefinir senha, bloquear, desat
 (endereço de demonstração, publicação, situação, funcionalidades, possibilidades de expansão, imagem, versões e
 histórico, liberar/ocultar) · **Orçamentos** (itens com funcionalidades, valores individuais, total, condições,
 prazo, validade, status, envio ao cliente) · **Solicitações** (conversa com o cliente) · **Arquivos** (upload por
-cliente/projeto, visível ou interno) · **Usuários** · **Atividades** (histórico de acessos) · **Interessados**
+cliente/projeto, visível ou interno) · **Usuários** · **Atividades** (histórico de acessos) · **Pedidos de orçamento**
 (pedidos do site, com "converter em cliente") · **Catálogo** de soluções.
 
 ### Área do cliente (`/painel`)

@@ -68,7 +68,7 @@ Arquivo para enviar: **`orcamento.net-hostinger.zip`** (um só). Não precisa de
 | "Falha na conexão com o banco" | dados errados em `config.local.php` | confira nome, usuário e senha do banco (host = `localhost`) |
 | Erro 500 logo ao abrir | PHP antigo | selecione PHP 8.2+ no hPanel |
 | Site da Conect volta sempre para o login | projeto não liberado para o cliente | Projetos → Conect → marque "Liberado para o cliente" |
-| Pedido não chega por e-mail | senha da caixa de e-mail | confira `mail.senha`; os pedidos ficam salvos em **Interessados** mesmo assim |
+| Pedido não chega por e-mail | senha da caixa de e-mail | confira `mail.senha`; os pedidos ficam salvos em **Pedidos de orçamento** mesmo assim |
 | Precisa reinstalar | — | apague `public_html/storage/.instalado` e as tabelas do banco |
 
 ## Outros clientes no futuro

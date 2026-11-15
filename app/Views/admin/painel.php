@@ -5,7 +5,7 @@ $kpis = [
     ['Projetos', $q("SELECT COUNT(*) FROM projetos"), 'tela', 'admin_projetos'],
     ['Orçamentos aguardando', $q("SELECT COUNT(*) FROM orcamentos WHERE status IN ('enviado','aguardando')"), 'cifrao', 'admin_orcamentos'],
     ['Solicitações abertas', $q("SELECT COUNT(*) FROM solicitacoes WHERE status IN ('aberta','andamento')"), 'mensagem', 'admin_solicitacoes'],
-    ['Novos interessados', $q("SELECT COUNT(*) FROM pedidos_orcamento WHERE status = 'novo'"), 'caixa', 'admin_pedidos'],
+    ['Novos pedidos de orçamento', $q("SELECT COUNT(*) FROM pedidos_orcamento WHERE status = 'novo'"), 'caixa', 'admin_pedidos'],
 ];
 $solicitacoes = db()->query("SELECT s.*, c.nome AS cliente FROM solicitacoes s JOIN clientes c ON c.id = s.cliente_id WHERE s.status IN ('aberta','andamento') ORDER BY s.criado_em DESC LIMIT 6")->fetchAll();
 $acessos = db()->query("SELECT a.acao, a.detalhe, a.criado_em, u.nome, c.nome AS cliente FROM auditoria a JOIN usuarios u ON u.id = a.usuario_id LEFT JOIN clientes c ON c.id = u.cliente_id WHERE u.perfil = 'cliente' ORDER BY a.id DESC LIMIT 8")->fetchAll();

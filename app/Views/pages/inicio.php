@@ -15,9 +15,9 @@ $destaques = db()->query('SELECT * FROM sistemas WHERE ativo = 1 ORDER BY destaq
         <a class="btn btn--vazado btn--g" href="<?=url_pagina('portfolio')?>">Ver o portfólio</a>
       </div>
       <ul class="lp-hero__checks">
-        <li><?=icone('check')?> Resposta em 1 dia útil</li>
+        <li><?=icone('check')?> Orçamento grátis</li>
         <li><?=icone('check')?> Proposta por escrito</li>
-        <li><?=icone('check')?> 90 dias de garantia</li>
+        <li><?=icone('check')?> Prévia antes de ir ao ar</li>
       </ul>
     </div>
     <div class="lp-hero__visual" aria-hidden="true">
@@ -40,7 +40,7 @@ $destaques = db()->query('SELECT * FROM sistemas WHERE ativo = 1 ORDER BY destaq
       <div class="flutua flutua--proposta">
         <div class="flutua__cab"><span>Proposta</span><b>aprovada</b></div>
         <div class="flutua__linha"><span>Escopo</span><b>fechado</b></div>
-        <div class="flutua__linha"><span>Prazo</span><b>no contrato</b></div>
+        <div class="flutua__linha"><span>Valores</span><b>por escrito</b></div>
       </div>
       <div class="flutua flutua--contato"><span class="flutua__ico"><?=icone('usuario')?></span><div><b>Novo usuário cadastrado</b><small>perfil: cliente</small></div></div>
       <div class="flutua flutua--seguro"><?=icone('portal')?> HTTPS · LGPD · Backup</div>

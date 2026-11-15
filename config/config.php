@@ -41,7 +41,7 @@ return [
         'responsavel' => '',                    // seu nome
         'email' => 'contato@orcamento.net',
         'whatsapp' => '',                       // ex.: (54) 99999-9999
-        'cidade' => 'Caxias do Sul/RS',
+        'cidade' => 'Nova Santa Rita/RS',
     ],
     'mail' => [
         'host' => '', 'port' => 587, 'seguranca' => 'tls', 'usuario' => '', 'senha' => '',

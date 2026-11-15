@@ -6,14 +6,14 @@
     <div class="texto-pub">
       <h2>Quem somos</h2>
       <p>Somos desenvolvedores com experiência em sistemas críticos: agendas, atendimentos, protocolos, auditoria e segurança de dados. Levamos esse mesmo cuidado para sites e sistemas de empresas de todos os portes.</p>
-      <p>Cada projeto começa com uma proposta por escrito, com escopo, prazo e investimento fechados. Durante o desenvolvimento, o cliente acompanha tudo pelo nosso portal, com login próprio, e só aprova quando estiver do jeito que precisa.</p>
-      <p>Depois da entrega, seguimos por perto: 90 dias de garantia e, se o cliente quiser, manutenção mensal sem fidelidade.</p>
+      <p>Cada projeto começa com uma proposta por escrito, com escopo e investimento fechados. Durante o desenvolvimento, o cliente acompanha tudo pelo nosso portal, com login próprio, e só aprova quando estiver do jeito que precisa.</p>
+      <p>Depois da entrega, seguimos por perto: garantia de correções e, se o cliente quiser, manutenção mensal sem fidelidade.</p>
       <?php if (contato('responsavel')): ?><p class="assinatura"><b><?=e(contato('responsavel'))?></b><br><span class="mudo">Fundador · orcamento.net</span></p><?php endif; ?>
     </div>
     <div class="numeros-sobre">
       <div><strong>100%</strong><span>código e dados do cliente</span></div>
-      <div><strong>90 dias</strong><span>de garantia após a entrega</span></div>
-      <div><strong>1 dia útil</strong><span>para responder pedidos</span></div>
+      <div><strong>Garantia</strong><span>de correções após a entrega</span></div>
+      <div><strong>Orçamento grátis</strong><span>e sem compromisso</span></div>
       <div><strong>LGPD</strong><span>segurança em todos os projetos</span></div>
     </div>
   </div>

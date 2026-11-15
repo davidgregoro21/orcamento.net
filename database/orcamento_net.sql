@@ -189,6 +189,8 @@ CREATE TABLE IF NOT EXISTS pedidos_orcamento (
   prazo VARCHAR(40) NULL,
   mensagem TEXT NULL,
   status VARCHAR(20) NOT NULL DEFAULT 'novo',              -- novo | em_contato | proposta | fechado | perdido
+  anotacoes TEXT NULL,                                     -- interno: histórico da negociação
+  atualizado_em DATETIME NULL,
   ip VARCHAR(45) NULL,
   criado_em DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

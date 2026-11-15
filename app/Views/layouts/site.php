@@ -9,12 +9,12 @@ $ativoPub = $page === 'sistema' ? 'sistemas' : $page;
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title><?=e($titulo)?></title>
-<meta name="description" content="Orçamento grátis de site institucional, sistema web, portal do cliente, manutenção, hospedagem e automação. Proposta com preço e prazo fechados e prévia do projeto no portal.">
+<meta name="description" content="Orçamento grátis de site institucional, sistema web, portal do cliente, manutenção, hospedagem e automação. Proposta clara por escrito e prévia do projeto no portal antes de ir ao ar.">
 <?php if (ambiente() !== 'producao'): ?><meta name="robots" content="noindex"><?php endif; ?>
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="<?=e($nomeSite)?> – Sites e sistemas com preço fechado">
-<meta property="og:description" content="Proposta clara, prazo no contrato e prévia do projeto no portal antes de ir ao ar.">
+<meta property="og:description" content="Proposta clara por escrito e prévia do projeto no portal antes de ir ao ar.">
 <meta property="og:image" content="<?=e(url_absoluta(asset('assets/img/og-orcamento.png')))?>">
 <meta name="theme-color" content="#101a33">
 <link rel="icon" href="<?=asset('assets/img/favicon.svg')?>" type="image/svg+xml">
@@ -47,13 +47,13 @@ $ativoPub = $page === 'sistema' ? 'sistemas' : $page;
     </div>
     <div><h4>Soluções</h4><ul><?php try { foreach (db()->query('SELECT slug, nome FROM sistemas WHERE ativo = 1 ORDER BY destaque DESC, ordem, nome LIMIT 5')->fetchAll() as $s): ?><li><a href="<?=url_pagina('sistema', ['s' => $s['slug']])?>"><?=e($s['nome'])?></a></li><?php endforeach; } catch (Throwable $e) {} ?></ul></div>
     <div><h4>Navegação</h4><ul><?php foreach ($menuPub as $pg => $rotulo): ?><li><a href="<?=url_pagina($pg)?>"><?=e($rotulo)?></a></li><?php endforeach; ?><li><a href="<?=url_pagina('login')?>">Entrar (clientes e administração)</a></li></ul></div>
-    <div><h4>Contato</h4><ul>
-      <li><a href="mailto:<?=e(contato('email'))?>"><?=e(contato('email'))?></a></li>
+    <div><h4>Fale conosco</h4><ul>
+      <li><a href="<?=url_pagina('contato')?>">Pedir orçamento pelo site</a></li>
       <?php if (contato('whatsapp')): ?><li><a href="<?=e(link_whatsapp('Olá! Quero um orçamento.'))?>" target="_blank" rel="noopener">WhatsApp <?=e(contato('whatsapp'))?></a></li><?php endif; ?>
       <?php if (contato('cidade')): ?><li><?=e(contato('cidade'))?></li><?php endif; ?>
     </ul></div>
   </div>
-  <div class="container pub-rodape__base"><span>© <?=date('Y')?> orcamento.net</span><span>Orçamento grátis · Resposta em 1 dia útil</span></div>
+  <div class="container pub-rodape__base"><span>© <?=date('Y')?> orcamento.net</span><span>Orçamento grátis e sem compromisso</span></div>
 </footer>
 <?php if (contato('whatsapp')): ?><a class="whats-flutuante" href="<?=e(link_whatsapp('Olá! Quero um orçamento.'))?>" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><?=icone('whatsapp')?></a><?php endif; ?>
 <script src="<?=asset('assets/js/app.js')?>" defer></script>

@@ -21,7 +21,6 @@ $preForm = ['servico' => 'Um sistema do catálogo', 'mensagem' => 'Tenho interes
         <?php if ($si['preco']): ?><div><small>Implantação a partir de</small><b><?=e($si['preco'])?></b></div><?php endif; ?>
         <?php if ($si['mensalidade']): ?><div><small>Mensalidade (servidor e suporte)</small><b><?=e($si['mensalidade'])?></b></div><?php endif; ?>
         <?php if (!$si['preco'] && !$si['mensalidade']): ?><div><small>Investimento</small><b>Sob consulta</b></div><?php endif; ?>
-        <?php if ($si['prazo']): ?><div><small>Prazo</small><b><?=e($si['prazo'])?></b></div><?php endif; ?>
       </div>
       <div class="botoes">
         <a class="btn btn--primario btn--g" href="#orcamento">Quero este sistema <?=icone('seta')?></a>
@@ -69,7 +68,7 @@ $preForm = ['servico' => 'Um sistema do catálogo', 'mensagem' => 'Tenho interes
     </div>
     <aside class="sistema-lateral" id="orcamento">
       <h2 class="cartao__titulo">Peça o orçamento deste sistema</h2>
-      <p class="mudo">Diga o que precisa adaptar. Respondemos em até 1 dia útil.</p>
+      <p class="mudo">Diga o que precisa adaptar. O orçamento é grátis.</p>
       <?php require __DIR__.'/../partials/form_orcamento.php'; ?>
     </aside>
   </div>

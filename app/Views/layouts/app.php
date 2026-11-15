@@ -14,7 +14,7 @@ try {
 $menu = $admin ? [
     ['Geral', [['admin', 'Painel', 'painel'], ['admin_atividades', 'Atividades', 'atividade']]],
     ['Clientes', [['admin_clientes', 'Clientes', 'predio'], ['admin_projetos', 'Projetos', 'tela'], ['admin_orcamentos', 'Orçamentos', 'cifrao'], ['admin_solicitacoes', 'Solicitações', 'mensagem', $pend['sol']], ['admin_arquivos', 'Arquivos', 'documento'], ['admin_usuarios', 'Usuários', 'pessoas']]],
-    ['Comercial', [['admin_pedidos', 'Interessados', 'caixa', $pend['ped']], ['admin_catalogo', 'Catálogo', 'sistema']]],
+    ['Comercial', [['admin_pedidos', 'Pedidos de orçamento', 'caixa', $pend['ped']], ['admin_catalogo', 'Catálogo', 'sistema']]],
 ] : (modo_demo() ? [
     ['', [['projetos', 'Projetos', 'tela']]],
 ] : [
