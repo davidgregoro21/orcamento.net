@@ -94,3 +94,54 @@ function completar_conect_existente(): void {
     if (!(int)$st->fetchColumn()) db()->prepare('INSERT INTO projeto_atualizacoes (projeto_id, versao, titulo, descricao, visivel_cliente, criado_em) VALUES (?,?,?,?,1,?)')->execute([$p['id'], '1.0', 'Versão de apresentação liberada', 'Primeira versão completa do novo site, com todas as páginas, formulário de proposta e blog.', $p['criado_em']]);
     criar_orcamento_conect($cid, (int)$p['id']);
 }
+
+/**
+ * Preparação automática do banco no primeiro acesso ao site (sem tela de instalação).
+ * Cria o banco (no XAMPP), as tabelas, o catálogo de soluções e a Conect Síndico. O administrador vem de
+ * 'admin_inicial' em config/config.local.php (fora do Git). Roda uma vez só: depois grava storage/.instalado.
+ */
+function preparar_site_automaticamente(): void {
+    $marca = __DIR__.'/../../storage/.instalado';
+    if (is_file($marca)) return;
+    // Trava: se dois visitantes chegarem juntos no primeiro acesso, só um prepara o banco.
+    $trava = fopen(__DIR__.'/../../storage/.instalando.lock', 'c');
+    if ($trava) flock($trava, LOCK_EX);
+    try {
+        if (is_file($marca)) return;
+        $db = cfg('db');
+        if (App\Core\Database::driver() === 'mysql') {
+            // No XAMPP cria o banco; na hospedagem o banco já vem criado pelo painel (e o usuário não tem CREATE DATABASE).
+            try {
+                $srv = new PDO("mysql:host={$db['host']};port={$db['port']};charset={$db['charset']}", $db['user'], $db['pass'], [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+                $srv->exec('CREATE DATABASE IF NOT EXISTS `'.str_replace('`', '', $db['name']).'` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
+            } catch (PDOException $e) { /* banco criado pelo painel da hospedagem */ }
+        }
+        aplicar_migracoes(true);
+
+        // Catálogo inicial de soluções (sem valores; edite em Catálogo). Só se ainda estiver vazio.
+        if ((int)db()->query('SELECT COUNT(*) FROM sistemas')->fetchColumn() === 0) {
+            $insS = db()->prepare('INSERT INTO sistemas (slug, nome, categoria, icone, resumo, descricao, para_quem, recursos, preco, mensalidade, prazo, imagem, destaque, ativo, ordem, criado_em) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,1,?,?)');
+            foreach (conteudo('sistemas_iniciais') as $i => $si) {
+                $insS->execute([$si['slug'], $si['nome'], $si['categoria'], $si['icone'], $si['resumo'], $si['descricao'], $si['para_quem'], $si['recursos'], $si['preco'] ?: null, $si['mensalidade'] ?: null, $si['prazo'], $si['imagem'] ?: null, $si['destaque'], $i, agora()]);
+            }
+        }
+
+        // Primeiro cliente: Conect Síndico (o site dela já vem dentro do portal).
+        criar_cliente_conect(SITE_INTERNO);
+
+        criar_admin_inicial();
+        audit('instalacao', 'banco preparado automaticamente no primeiro acesso');
+        @file_put_contents($marca, date('c'));
+    } finally {
+        if ($trava) { flock($trava, LOCK_UN); fclose($trava); }
+    }
+}
+
+/** Cria o administrador definido em config.local.php ('admin_inicial' => nome, email, senha), se ainda não houver nenhum. */
+function criar_admin_inicial(): void {
+    $a = cfg('admin_inicial');
+    if (!is_array($a) || empty($a['email']) || empty($a['senha'])) return;
+    if ((int)db()->query("SELECT COUNT(*) FROM usuarios WHERE perfil = 'admin'")->fetchColumn() > 0) return;
+    db()->prepare('INSERT INTO usuarios (nome, email, senha_hash, perfil, ativo, deve_trocar_senha, criado_em) VALUES (?,?,?,?,1,0,?)')
+        ->execute([(string)($a['nome'] ?? 'Administrador'), mb_strtolower(trim((string)$a['email'])), hash_senha((string)$a['senha']), 'admin', agora()]);
+}

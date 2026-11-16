@@ -15,6 +15,8 @@ return [
     ],
     // 64 caracteres hexadecimais: php -r "echo bin2hex(random_bytes(32));"  (a mesma no site do cliente)
     'previa_chave' => 'TROQUE-PELA-CHAVE-GERADA',
+    // Administrador criado sozinho no primeiro acesso ao site (só se ainda não houver nenhum). Depois troque a senha no painel.
+    'admin_inicial' => ['nome' => 'Seu Nome', 'email' => 'seu@email.com', 'senha' => 'TROQUE-POR-UMA-SENHA-FORTE'],
     'contato' => ['responsavel' => 'Seu Nome', 'email' => 'contato@orcamento.net', 'whatsapp' => '(54) 99999-9999'],
     'mail' => [
         'host' => 'smtp.SEU-PROVEDOR.com.br', 'port' => 587, 'seguranca' => 'tls',

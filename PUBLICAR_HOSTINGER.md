@@ -32,15 +32,14 @@ Arquivo para enviar: **`orcamento.net-hostinger.zip`** (um só). Não precisa de
    - `db` → nome do banco, usuário e senha do passo 2;
    - `contato` → seu nome e WhatsApp;
    - `mail` → `senha` da caixa `nao-responda@orcamento.net`.
+   - `admin_inicial` → seu nome, e-mail e uma senha forte (é o seu login de administrador).
    (O site da Conect usa automaticamente essas mesmas configurações — não há nada para editar nele.)
-4. Abra **https://orcamento.net/instalar.php**:
-   - preencha seu nome, e-mail e senha de administrador;
-   - deixe marcado **"Cadastrar a Conect Síndico como primeiro cliente"**;
-   - clique em **Instalar**.
+4. Abra **https://orcamento.net/**. Não há tela de instalação: no primeiro acesso o site cria sozinho as tabelas,
+   o catálogo, a Conect Síndico e o seu administrador, e já abre normalmente.
 
-## 4b. Alternativa: importar o banco pronto (sem usar o instalador)
+## 4b. Alternativa: importar o banco pronto
 1. hPanel → **Bancos de dados → phpMyAdmin** → abra o banco criado no passo 2 → aba **Importar** → escolha `database/orcamento_net_completo.sql`.
-2. No Gerenciador de arquivos, crie o arquivo vazio `public_html/storage/.instalado` (assim o instalador não abre).
+2. No Gerenciador de arquivos, crie o arquivo vazio `public_html/storage/.instalado` (assim o site não tenta preparar o banco de novo).
 3. Entre com **davidgregorio21@gmail.com** e a senha provisória **Trocar@2026** — o sistema pede uma senha nova no primeiro acesso.
    O acesso do Daniel já vem pronto: **daniel@conectsindico.com.br** / **Conect@2026**.
 

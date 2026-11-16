@@ -1,8 +1,21 @@
 <?php
 // Buffer de saída: permite redirects HTTP mesmo quando uma página processa POST dentro do layout.
 if (ob_get_level() === 0) { ob_start(); }
-if (!is_file(__DIR__.'/../storage/.instalado')) { header('Location: instalar.php'); exit; }
-require __DIR__.'/../app/Core/bootstrap.php';
+if (is_file(__DIR__.'/../storage/.instalado')) {
+    require __DIR__.'/../app/Core/bootstrap.php';
+} else {
+    // Primeiro acesso: prepara o banco sozinho (sem tela de instalação) e segue abrindo o site normalmente.
+    define('SEM_BANCO', true);
+    require __DIR__.'/../app/Core/bootstrap.php';
+    try { preparar_site_automaticamente(); }
+    catch (Throwable $e) {
+        error_log('[orcamento.net][preparação] '.$e->getMessage());
+        http_response_code(503);
+        exit(ambiente() === 'producao' ? 'O site está sendo preparado. Tente novamente em instantes.' : 'Não foi possível preparar o banco de dados: '.e($e->getMessage()).' (verifique se o MySQL está ligado e os dados em config/config.php).');
+    }
+    garantir_banco_atualizado();
+    refresh_logged_user();
+}
 
 $page = str_replace('-', '_', (string)($_GET['page'] ?? 'inicio')); $_GET['page'] = $page;
 

@@ -54,6 +54,8 @@ mantém o acesso por 8 h. A chave, o ambiente e o e-mail são lidos da configura
 no site do cliente. No cadastro do projeto, o endereço de demonstração é `sites/conect-sindico/`.
 Endereços externos (https://...) continuam aceitos para outros projetos.
 
-## Instalação local (XAMPP)
-`http://orcamento.localhost/` → instalação (banco, administrador, catálogo e Conect Síndico).
+## Rodar local (XAMPP)
+Abra `http://orcamento.net.localhost/` (com o MySQL ligado). Não há tela de instalação: no primeiro acesso o site
+cria sozinho o banco, as tabelas, o catálogo e a Conect Síndico (`preparar_site_automaticamente()` em
+`app/Core/Sementes.php`). O administrador vem de `admin_inicial` em `config/config.local.php` (fora do Git).
 Publicação na Hostinger: veja `PUBLICAR_HOSTINGER.md`.

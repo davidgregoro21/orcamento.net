@@ -23,7 +23,7 @@ final class Database {
             return self::$pdo;
         } catch (PDOException $e) {
             http_response_code(500);
-            exit('Falha na conexão com o banco de dados. Verifique config/config.php e rode public/instalar.php.');
+            exit('Falha na conexão com o banco de dados. Verifique se o MySQL está ligado e os dados em config/config.php.');
         }
     }
 }
