@@ -6,7 +6,7 @@
 return [
     'ambiente' => 'producao',
     'forcar_https' => true,
-    'app_url' => 'https://orcamento.net',
+    'app_url' => 'https://xn--oramento-t0a.net',   // orçamento.net (forma técnica do domínio com ç),
     'db' => [
         'host' => 'localhost',
         'name' => 'u000000000_orcamento',      // PREENCHER: nome do banco (começa com u + números)
@@ -19,15 +19,15 @@ return [
     'previa_chave' => 'b91ae6385ea49d37353373c8cc68e0289f91af7389a017cc7a0ac4567a8adc61',
     'contato' => [
         'responsavel' => '',                    // PREENCHER: seu nome
-        'email' => 'contato@orcamento.net',
+        'email' => 'contato@xn--oramento-t0a.net',
         'whatsapp' => '',                       // PREENCHER: ex. (54) 99999-9999
         'cidade' => 'Nova Santa Rita/RS',
     ],
-    // E-mail da Hostinger (hPanel → E-mails). Crie a caixa nao-responda@orcamento.net e coloque a senha.
+    // E-mail da Hostinger (hPanel → E-mails). Crie a caixa nao-responda@xn--oramento-t0a.net e coloque a senha.
     'mail' => [
         'host' => 'smtp.hostinger.com', 'port' => 465, 'seguranca' => 'ssl',
-        'usuario' => 'nao-responda@orcamento.net', 'senha' => '',   // PREENCHER: senha da caixa de e-mail
-        'remetente' => 'nao-responda@orcamento.net', 'nome' => 'orcamento.net',
-        'destino' => 'contato@orcamento.net',
+        'usuario' => 'nao-responda@xn--oramento-t0a.net', 'senha' => '',   // PREENCHER: senha da caixa de e-mail
+        'remetente' => 'nao-responda@xn--oramento-t0a.net', 'nome' => 'orcamento.net',
+        'destino' => 'contato@xn--oramento-t0a.net',
     ],
 ];
