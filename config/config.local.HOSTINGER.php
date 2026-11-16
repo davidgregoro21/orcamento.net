@@ -13,6 +13,8 @@ return [
         'user' => 'u000000000_orcamento',      // PREENCHER: usuário do banco
         'pass' => 'COLOQUE-A-SENHA-DO-BANCO',  // PREENCHER: senha do banco
     ],
+    // Seu login de administrador: criado sozinho no primeiro acesso ao site. Depois troque a senha em "Minha senha".
+    'admin_inicial' => ['nome' => '', 'email' => '', 'senha' => ''],   // PREENCHER: nome, e-mail e senha forte
     // Chave dos links de prévia (o site da Conect, dentro do portal, lê esta mesma chave automaticamente).
     'previa_chave' => 'b91ae6385ea49d37353373c8cc68e0289f91af7389a017cc7a0ac4567a8adc61',
     'contato' => [
