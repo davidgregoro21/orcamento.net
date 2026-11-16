@@ -6,7 +6,7 @@
 return [
     'ambiente' => 'producao',
     'forcar_https' => true,
-    'app_url' => 'https://xn--oramento-t0a.net',   // orçamento.net (forma técnica do domínio com ç),
+    'app_url' => 'https://xn--oramento-t0a.net',   // orçamento.net (forma técnica do domínio com ç)
     'db' => [
         'host' => 'localhost',
         'name' => 'u000000000_orcamento',      // PREENCHER: nome do banco (começa com u + números)
