@@ -16,3 +16,6 @@ backups/
 # Ferramentas só para uso local
 public/resgate_admin.php
 public/sites/*/importar_antigo.php
+
+# Cópia da configuração de produção guardada no computador (tem senhas) — nunca versionar
+config/config.local.producao.php
