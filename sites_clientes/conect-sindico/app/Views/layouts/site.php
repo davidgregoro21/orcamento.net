@@ -18,6 +18,7 @@ $jsonLd = [
 ?><!doctype html>
 <html lang="pt-BR">
 <head>
+<script>try { if (window.self !== window.top) document.documentElement.className += ' no-portal'; } catch (e) { document.documentElement.className += ' no-portal'; }</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title><?=e($titulo)?></title>

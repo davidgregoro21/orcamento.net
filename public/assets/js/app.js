@@ -95,8 +95,28 @@
     b.addEventListener('click', function () {
       document.querySelectorAll('.dispositivos button').forEach(function (x) { x.classList.remove('ativo'); });
       b.classList.add('ativo'); if (quadro) quadro.style.width = b.getAttribute('data-largura');
+      var vz = document.getElementById('visualizador'); if (vz) vz.classList.toggle('visualizador--aparelho', b.getAttribute('data-largura') !== '100%');
     });
   });
+  // Visualizador: esconder/mostrar a barra (lembra a escolha) e tela cheia
+  var vz = document.getElementById('visualizador');
+  if (vz) {
+    var semBarra = false; try { semBarra = localStorage.getItem('vz_sem_barra') === '1'; } catch (e) {}
+    vz.classList.toggle('visualizador--sem-barra', semBarra);
+    vz.querySelectorAll('[data-ocultar-barra]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var agora = !vz.classList.contains('visualizador--sem-barra');
+        vz.classList.toggle('visualizador--sem-barra', agora);
+        try { localStorage.setItem('vz_sem_barra', agora ? '1' : '0'); } catch (e) {}
+      });
+    });
+    var bt = vz.querySelector('[data-tela-cheia]');
+    if (bt && !(vz.requestFullscreen || vz.webkitRequestFullscreen)) bt.hidden = true;
+    if (bt) bt.addEventListener('click', function () {
+      if (document.fullscreenElement || document.webkitFullscreenElement) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+      (vz.requestFullscreen || vz.webkitRequestFullscreen).call(vz);
+    });
+  }
   // Imprimir / salvar PDF
   document.querySelectorAll('[data-imprimir]').forEach(function (b) { b.addEventListener('click', function () { window.print(); }); });
 })();

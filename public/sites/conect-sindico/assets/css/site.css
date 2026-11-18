@@ -338,6 +338,8 @@ a.contato__item:hover { border-color: var(--turquesa); box-shadow: var(--sombra)
 /* Faixa da prévia liberada pelo portal orcamento.net */
 .faixa-previa { background: #101a33; color: #c9d6ff; text-align: center; font-size: .85rem; font-weight: 600; padding: 7px 12px; }
 .faixa-previa span { color: #8fb0ff; font-weight: 800; }
+/* Dentro do portal (iframe) a barra do portal já identifica o rascunho: esconde a faixa para dar mais espaço ao site. */
+.no-portal .faixa-previa { display: none; }
 
 /* ---------------- Área do condômino ---------------- */
 .menu .menu__portal.ativo { border-color: var(--turquesa); background: var(--turquesa-claro); color: var(--petroleo); }

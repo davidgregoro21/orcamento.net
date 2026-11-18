@@ -198,15 +198,42 @@
 .futuras li > span:first-child { display: flex; align-items: center; gap: 8px; font-weight: 600; }
 .futuras .ico { color: #f0a500; }
 
-/* Visualizador do site */
-.visualizador { display: flex; flex-direction: column; gap: 12px; height: calc(100vh - 96px); }
-.visualizador__barra { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.dispositivos { display: inline-flex; background: #fff; border: 1px solid var(--linha); border-radius: 999px; padding: 4px; }
-.dispositivos button { background: none; border: 0; padding: 7px 12px; border-radius: 999px; color: var(--cinza); cursor: pointer; }
-.dispositivos button.ativo { background: var(--noite); color: #fff; }
-.visualizador__palco { flex: 1; display: flex; justify-content: center; background: #e6eaf2; border-radius: 16px; padding: 12px; overflow: auto; }
-.visualizador__palco iframe { width: 100%; height: 100%; min-height: 560px; border: 0; border-radius: 10px; background: #fff; box-shadow: 0 10px 30px rgba(16, 26, 51, .15); transition: width .25s; }
-.visualizador__dica { text-align: center; font-size: .85rem; margin: 0; }
+/* Visualizador do site: tela cheia, sem menu lateral nem cabeçalho */
+.painel--tela-cheia .lateral, .painel--tela-cheia .lateral__fundo, .painel--tela-cheia .barra { display: none; }
+.painel--tela-cheia .principal { margin-left: 0; min-height: 0; }
+.painel--tela-cheia .conteudo { max-width: none; padding: 0; }
+.painel--tela-cheia .conteudo > .aviso { margin: 8px 12px 0; }
+.visualizador { position: relative; display: flex; flex-direction: column; height: 100vh; height: 100dvh; background: #e6eaf2; }
+.visualizador__barra { flex: none; display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 10px; background: var(--noite); color: #dfe6f8; transition: margin-top .2s; }
+.visualizador__titulo { display: flex; align-items: center; gap: 10px; min-width: 0; margin-right: auto; }
+.visualizador__titulo b { font-size: .95rem; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.visualizador__titulo .selo { flex: none; font-size: .72rem; padding: 3px 8px; }
+.vz-btn { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 11px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, .16); background: rgba(255, 255, 255, .06); color: #fff; font: 600 .85rem var(--fonte); text-decoration: none; cursor: pointer; white-space: nowrap; }
+.vz-btn:hover { background: rgba(255, 255, 255, .14); }
+.vz-btn--primario { background: var(--azul); border-color: var(--azul); }
+.vz-btn--primario:hover { background: var(--azul-escuro); }
+.vz-btn .ico { width: 16px; height: 16px; }
+.dispositivos { display: inline-flex; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .16); border-radius: 8px; padding: 2px; }
+.dispositivos button { background: none; border: 0; padding: 5px 9px; border-radius: 6px; color: #b8c3e0; cursor: pointer; }
+.dispositivos button .ico { width: 16px; height: 16px; }
+.dispositivos button.ativo { background: #fff; color: var(--noite); }
+.vz-usuario summary { padding: 0; }
+.vz-usuario .avatar { width: 32px; height: 32px; font-size: .8rem; }
+.vz-usuario .app-usuario__menu { right: 0; top: calc(100% + 8px); z-index: 70; }
+.visualizador__palco { flex: 1; min-height: 0; display: flex; justify-content: center; overflow: auto; }
+.visualizador__palco iframe { width: 100%; height: 100%; border: 0; background: #fff; transition: width .25s; }
+.visualizador--aparelho .visualizador__palco { padding: 16px; }
+.visualizador--aparelho .visualizador__palco iframe { border-radius: 14px; box-shadow: 0 10px 30px rgba(16, 26, 51, .2); }
+.vz-mostrar { display: none; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); z-index: 5; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; border: 0; background: rgba(16, 26, 51, .85); color: #fff; font: 600 .8rem var(--fonte); cursor: pointer; box-shadow: 0 6px 20px rgba(0, 0, 0, .25); opacity: .55; transition: opacity .2s; }
+.vz-mostrar:hover, .vz-mostrar:focus-visible { opacity: 1; }
+.vz-mostrar .ico { width: 14px; height: 14px; }
+.visualizador--sem-barra .visualizador__barra { display: none; }
+.visualizador--sem-barra .vz-mostrar { display: inline-flex; }
+.vz-vazio { margin: 24px auto; max-width: 480px; }
+@media (max-width: 900px) {
+  .vz-btn span, .visualizador__titulo .selo, .dispositivos, [data-tela-cheia] { display: none; }
+  .vz-btn { padding: 0 9px; }
+}
 
 /* Orçamentos (cliente) */
 .orc-lista { display: grid; gap: 14px; }
@@ -282,14 +309,10 @@
   .previa-grande { margin: -22px -22px 18px; }
   .futuras li { flex-direction: column; align-items: flex-start; }
   .app-usuario__nome { display: none; }
-  .visualizador { height: auto; }
-  .visualizador__palco iframe { min-height: 70vh; }
   .dados { grid-template-columns: 1fr; }
 }
 /* Modo demo: identificação "Rascunho – Demo do projeto" */
 .selo--aviso { background: #fff4e0; color: #9a6400; border: 1px solid #f5d7a1; font-weight: 700; }
-.visualizador__titulo { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-right: auto; }
-.visualizador__titulo b { font-size: 1.02rem; }
 
 /* Pedidos de orçamento */
 .selo--novo { background: var(--verde-claro); color: #116b40; }
