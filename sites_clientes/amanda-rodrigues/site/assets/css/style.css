@@ -596,7 +596,7 @@ a:hover { color: var(--wine); }
   .chapters { grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
   .chapter--wide { grid-column: 1 / span 7; }
   .chapter--tall { grid-column: 8 / span 5; }
-  .chapter--dark { grid-column: 1 / span 5; }
+  .chapter--dark, .chapter--notarial { grid-column: 1 / span 5; }
   .chapter:nth-child(4) { grid-column: 6 / span 7; }
   .chapter--wide .chapter-panel ul, .chapter:nth-child(4) .chapter-panel ul { columns: 2; column-gap: 2rem; }
   .chapter--full { grid-template-columns: 1fr 2fr; padding: 3.4rem; }
