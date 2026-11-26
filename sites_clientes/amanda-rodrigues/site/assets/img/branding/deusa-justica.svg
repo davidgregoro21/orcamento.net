@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 520" role="img" aria-labelledby="dj">
+  <title id="dj">Deusa da Justiça em traços dourados</title>
+  <defs>
+    <linearGradient id="dg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="520">
+      <stop offset="0" stop-color="#E8D8B5"/><stop offset=".5" stop-color="#C6A15B"/><stop offset="1" stop-color="#A9853F"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#dg)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Cabeça e perfil -->
+    <path class="ln" d="M118 62 C120 48 134 42 145 47 C154 51 157 62 155 74 C154 84 150 93 143 99 C137 104 129 104 124 99 C120 95 119 90 117 86 C114 85 113 82 115 80 C113 76 114 70 118 62"/>
+    <!-- Cabelo preso e coque -->
+    <path class="ln" d="M120 58 C124 46 140 40 152 47 C160 52 162 62 158 72"/>
+    <path class="ln" d="M150 46 C160 38 172 42 172 52 C172 60 164 64 157 62"/>
+    <path class="ln" d="M156 48 C162 46 167 50 166 55"/>
+    <path class="ln" d="M126 50 C134 47 144 48 150 54"/>
+    <!-- Venda -->
+    <path class="ln" d="M114 72 C126 70 142 70 157 68"/>
+    <path class="ln" d="M115 79 C128 77 143 77 156 75"/>
+    <path class="ln" d="M157 69 C163 74 168 82 171 92"/>
+    <path class="ln" d="M156 75 C160 81 163 88 164 96"/>
+    <!-- Mechas e traços do rosto -->
+        <path class="ln" d="M117 84 C116 87 118 88 120 88"/>
+    <path class="ln" d="M121 93 C124 94 127 94 129 92"/>
+    <!-- Pescoço -->
+    <path class="ln" d="M128 102 C128 108 126 114 122 119"/>
+    <path class="ln" d="M143 99 C143 107 146 113 151 117"/>
+    <!-- Ombros -->
+    <path class="ln" d="M122 119 C110 121 101 126 97 136"/>
+    <path class="ln" d="M151 117 C162 119 170 124 176 132"/>
+    <!-- Braço direito erguido (lado do observador) -->
+    <path class="ln" d="M176 132 C190 128 206 122 216 110 C224 98 228 84 231 70"/>
+    <path class="ln" d="M168 150 C186 146 204 140 222 124 C232 110 236 92 240 72"/>
+    <!-- Mão e empunhadura -->
+    <path class="ln" d="M 230 72 C 229 64 233 59 237 60 C 242 60 243 66 241 72"/>
+    <path class="ln" d="M 232 66 H 241"/>
+    <!-- Balança: haste, travessão e pratos -->
+    <path class="ln" d="M 236 60 V 24"/>
+    <circle class="ln" cx="236" cy="20" r="3.5"/>
+    <path class="ln" d="M 194 44 C 214 38 258 38 278 44"/>
+    <circle class="ln" cx="236" cy="40" r="2"/>
+    <path class="ln" d="M 194 44 L 180 102 M 194 44 L 208 102 M 194 44 V 102"/>
+    <path class="ln" d="M 176 102 H 212 C 210 112 202 117 194 117 C 186 117 178 112 176 102"/>
+    <path class="ln" d="M 278 44 L 264 96 M 278 44 L 292 96 M 278 44 V 96"/>
+    <path class="ln" d="M 260 96 H 296 C 294 106 286 111 278 111 C 270 111 262 106 260 96"/>
+    <!-- Braço esquerdo com espada -->
+    <path class="ln" d="M97 136 C88 160 80 190 72 228"/>
+    <path class="ln" d="M110 150 C103 174 94 202 87 230"/>
+    <path class="ln" d="M71 227 C68 238 84 242 88 231"/>
+    <!-- Espada -->
+    <circle class="ln" cx="79" cy="218" r="3"/>
+    <path class="ln" d="M79 221 V233"/>
+    <path class="ln" d="M64 235 C70 233 88 233 94 235 C88 238 70 238 64 235"/>
+    <path class="ln" d="M76 238 L79 348 L82 238"/>
+    <path class="ln" d="M79 244 V330"/>
+    <!-- Túnica: drapeado diagonal sobre o peito -->
+    <path class="ln" d="M112 126 C124 146 146 170 172 186"/>
+    <path class="ln" d="M120 122 C130 140 150 160 175 172"/>
+    <path class="ln" d="M126 150 C134 160 146 168 158 172"/>
+    <!-- Cintura -->
+    <path class="ln" d="M104 200 C122 206 152 206 174 198"/>
+    <path class="ln" d="M104 206 C122 212 152 212 174 204"/>
+    <!-- Contorno lateral do vestido -->
+    <path class="ln" d="M110 150 C106 174 104 196 104 206 C100 250 92 300 84 350 C78 392 70 440 64 486"/>
+    <path class="ln" d="M168 150 C172 170 174 186 174 204 C178 250 186 300 196 350 C204 392 214 440 222 486"/>
+    <!-- Barra ondulada -->
+    <path class="ln" d="M64 486 C76 494 88 480 102 490 C116 500 128 484 142 494 C156 502 170 486 184 494 C198 502 210 488 222 486"/>
+    <!-- Pregas -->
+    <path class="ln" d="M120 212 C118 280 110 360 100 488"/>
+    <path class="ln" d="M136 214 C136 300 134 390 132 486"/>
+    <path class="ln" d="M152 212 C156 290 164 380 172 492"/>
+    <path class="ln" d="M164 210 C172 280 186 380 200 492"/>
+    <path class="ln" d="M128 214 C126 260 122 300 116 340"/>
+    <path class="ln" d="M144 214 C146 250 148 290 152 330"/>
+    <!-- Pés e base -->
+    <path class="ln" d="M112 494 C112 502 128 504 132 498"/>
+    <path class="ln" d="M150 498 C152 504 166 504 170 496"/>
+    <path class="ln" d="M40 508 H248"/>
+    <path class="ln" d="M60 514 H228"/>
+  </g>
+</svg>

@@ -145,3 +145,34 @@ function criar_admin_inicial(): void {
     db()->prepare('INSERT INTO usuarios (nome, email, senha_hash, perfil, ativo, deve_trocar_senha, criado_em) VALUES (?,?,?,?,1,0,?)')
         ->execute([(string)($a['nome'] ?? 'Administrador'), mb_strtolower(trim((string)$a['email'])), hash_senha((string)$a['senha']), 'admin', agora()]);
 }
+
+
+/**
+ * Segundo cliente: Amanda Rodrigues Advocacia (Porto Alegre/RS). O site fica em sites_clientes/amanda-rodrigues/site
+ * e abre dentro do portal em sites/amanda-rodrigues/ (só para quem tem o projeto liberado). Sem login criado aqui:
+ * crie o acesso da cliente no painel (Clientes → Amanda Rodrigues Advocacia → Logins).
+ */
+const SITE_AMANDA = 'sites/amanda-rodrigues/';
+function criar_cliente_amanda(): int {
+    $st = db()->prepare('SELECT id FROM clientes WHERE nome = ?'); $st->execute(['Amanda Rodrigues Advocacia']);
+    $cid = (int)$st->fetchColumn();
+    if (!$cid) {
+        db()->prepare('INSERT INTO clientes (nome, localizacao, tipo_projeto, categoria, contato_nome, email, telefone, logo, cor, ativo, criado_em) VALUES (?,?,?,?,?,?,?,?,?,1,?)')
+            ->execute(['Amanda Rodrigues Advocacia', 'Porto Alegre/RS', 'Site institucional', 'Advocacia', 'Dra. Amanda Rodrigues', 'faj.atendimento@gmail.com', '(51) 3515-3533', 'assets/img/clientes/amanda-rodrigues.svg', '#4A1425', agora()]);
+        $cid = (int)db()->lastInsertId();
+    }
+    $st = db()->prepare('SELECT id FROM projetos WHERE slug = ?'); $st->execute(['amanda-rodrigues']);
+    if (!(int)$st->fetchColumn()) {
+        db()->prepare('INSERT INTO projetos (cliente_id, slug, nome, tipo, situacao, chamada, descricao, funcionalidades, futuras, url_previa, imagem, permitir_embed, ativo, ordem, criado_em, atualizado_em) VALUES (?,?,?,?,?,?,?,?,?,?,?,1,1,1,?,?)')
+            ->execute([$cid, 'amanda-rodrigues', 'Site institucional Amanda Rodrigues Advocacia', 'Site institucional', 'aprovacao',
+                'O novo site da Amanda Rodrigues Advocacia está pronto para você ver.',
+                "Site institucional do escritório, nas cores e no monograma da marca: apresentação da advogada, áreas de atuação, diferenciais e contato.\nEsta é a versão de apresentação. Navegue à vontade: é assim que o site vai ficar.",
+                "Página única com Início, O Escritório, Áreas de Atuação, Diferenciais e Contato\nCinco áreas: Direito Civil, Sucessório, Notarial e Registral, Empresarial e Público\nLayout adaptado para celular, tablet e computador\nFormulário de contato com envio por e-mail e alternativa pelo WhatsApp\nWhatsApp com mensagem pronta para cada área de atuação\nProteção contra spam e autorização de contato (LGPD)\nPolítica de privacidade e página de erro personalizada\nSEO: título, descrição, dados de escritório de advocacia e imagem de compartilhamento",
+                "Blog com artigos jurídicos\nAgendamento de consulta online\nÁrea do cliente com documentos e andamento dos casos\nFormulários por área (inventário, contratos, empresas)",
+                SITE_AMANDA, 'previa-amanda-rodrigues.jpg', agora(), agora()]);
+        $pid = (int)db()->lastInsertId();
+        db()->prepare('INSERT INTO projeto_atualizacoes (projeto_id, versao, titulo, descricao, visivel_cliente, criado_em) VALUES (?,?,?,?,1,?)')
+            ->execute([$pid, '1.0', 'Versão de apresentação liberada', 'Primeira versão completa do site, com todas as seções, formulário de contato e WhatsApp.', agora()]);
+    }
+    return $cid;
+}

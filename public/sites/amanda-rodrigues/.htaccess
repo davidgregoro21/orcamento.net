@@ -1,0 +1,9 @@
+# Site Amanda Rodrigues Advocacia dentro do orcamento.net. Tudo passa pelo index.php desta pasta,
+# que confere o login do portal antes de entregar qualquer arquivo (os arquivos ficam em sites_clientes/).
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^index\.php$ - [L]
+  RewriteRule ^(.*)$ index.php?f=$1 [QSA,L]
+</IfModule>

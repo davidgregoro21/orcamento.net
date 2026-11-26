@@ -1,0 +1,40 @@
+AMANDA RODRIGUES ADVOCACIA — Site institucional
+================================================
+
+PUBLICAR NA HOSTINGER
+1. hPanel > Sites > Gerenciador de Arquivos > pasta public_html.
+2. Envie o conteúdo desta pasta (index.html, assets/, enviar.php, .htaccess etc.)
+   direto em public_html (não envie a pasta "site-amanda-rodrigues" inteira).
+   Dica: envie o .zip e use "Extrair" no próprio Gerenciador de Arquivos.
+3. Ative o SSL gratuito (hPanel > Segurança > SSL) e, depois, descomente
+   as linhas "Forçar HTTPS" no arquivo .htaccess.
+
+ANTES DE PUBLICAR (procure por "SUBSTITUIR" / "[inserir]")
+- index.html: número da OAB, formação e trajetória (seção "O Escritório"
+  e rodapé). O número da OAB é obrigatório na publicidade da advocacia.
+- index.html, robots.txt, sitemap.xml: troque "https://www.seudominio.com.br"
+  pelo domínio definitivo.
+- enviar.php: crie um e-mail do domínio na Hostinger (ex.: contato@seudominio.com.br)
+  e coloque-o em $remetente. As mensagens chegam em faj.atendimento@gmail.com.
+
+ESTRUTURA
+index.html                    Página principal (todas as seções)
+politica-de-privacidade.html  Política de Privacidade (LGPD)
+404.html                      Página de erro
+enviar.php                    Envio do formulário por e-mail (PHP)
+.htaccess / robots.txt / sitemap.xml
+assets/css/style.css          Estilos (comentados por seção)
+assets/js/script.js           Interações em JavaScript puro
+assets/img/branding           Monograma AR, Deusa da Justiça, favicon, imagem de compartilhamento
+assets/img/institucional      Foto da advogada (WebP + JPG, 600 e 900 px)
+assets/img/areas-atuacao      Ícones exclusivos das cinco áreas
+assets/vendor                 Bootstrap 5.3.3 e Bootstrap Icons 1.11.3 (locais, sem CDN)
+
+TROCAR A FOTO
+Substitua os arquivos em assets/img/institucional mantendo os mesmos nomes
+(proporção vertical, ideal 4:5).
+
+WHATSAPP
+Número: (51) 99861-3596. A mensagem automática fica em assets/js/script.js
+(WA_MSG_PADRAO) e, por área, no atributo data-wa de cada capítulo no index.html.
+Se o envio por e-mail falhar, o formulário oferece enviar a mensagem pelo WhatsApp.

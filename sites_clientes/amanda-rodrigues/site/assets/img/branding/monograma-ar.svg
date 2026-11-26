@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 140" role="img" aria-labelledby="t">
+  <title id="t">Monograma AR – Amanda Rodrigues Advocacia</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8D8B5"/><stop offset=".35" stop-color="#C6A15B"/>
+      <stop offset=".6" stop-color="#9C7A3C"/><stop offset=".85" stop-color="#D9BC7E"/><stop offset="1" stop-color="#B08A45"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#g)">
+    <!-- A: haste fina -->
+    <path d="M12 130 L17 130 L64 20 L61 13 Z"/>
+    <!-- A: haste grossa -->
+    <path d="M60 10 L72 10 L119 130 L100 130 Z"/>
+    <!-- A: travessa -->
+    <path d="M31 92 L88 92 L89.6 96 L29.3 96 Z"/>
+    <!-- serifas do A -->
+    <path d="M3 130 H28 V133 H3 Z M92 130 H128 V133 H92 Z"/>
+    <!-- R: haste -->
+    <path d="M120 16 H133 V130 H120 Z"/>
+    <path d="M111 13 H134 V16 H111 Z M111 130 H142 V133 H111 Z"/>
+    <!-- R: bojo -->
+    <path fill-rule="evenodd" d="M133 13 H150 C176 13 186 27 186 43 C186 61 172 73 150 73 H133 V69 H148 C162 69 168 58 168 43 C168 27 161 17 148 17 H133 Z"/>
+    <!-- R: perna em curva alongada -->
+    <path d="M144 72 C158 74 164 86 170 102 C177 120 188 130 207 131 L207 133 C182 134 168 124 160 106 C153 90 150 79 138 74 Z"/>
+  </g>
+</svg>

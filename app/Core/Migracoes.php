@@ -4,7 +4,7 @@
  * Roda sozinha no primeiro acesso depois de enviar uma versão nova (bootstrap.php) e na instalação.
  * Nunca apaga dados: só cria tabelas/colunas que faltam e copia informações para a estrutura nova.
  */
-const VERSAO_BANCO = '6';
+const VERSAO_BANCO = '7';
 
 /** Converte o SQL do MySQL para SQLite (usado só quando 'driver' => 'sqlite', para testes). */
 function sql_para_sqlite(string $sql): string {
@@ -102,6 +102,12 @@ function aplicar_migracoes(bool $instalacaoNova = false): array {
         adicionar_coluna('pedidos_orcamento', 'anotacoes', 'TEXT NULL');
         adicionar_coluna('pedidos_orcamento', 'atualizado_em', 'DATETIME NULL');
         registrar_migracao('006_pedidos_anotacoes');
+    }
+    if (!migracao_aplicada('007_cliente_amanda_rodrigues')) {
+        // Segundo cliente: Amanda Rodrigues Advocacia, com o site dentro do portal (sites/amanda-rodrigues/).
+        criar_cliente_amanda();
+        registrar_migracao('007_cliente_amanda_rodrigues');
+        $feito[] = 'Cliente Amanda Rodrigues Advocacia e o projeto do site cadastrados.';
     }
     @file_put_contents(__DIR__.'/../../storage/.versao_banco', VERSAO_BANCO);
     return $feito;
