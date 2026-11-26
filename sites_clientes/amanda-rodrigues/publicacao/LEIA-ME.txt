@@ -14,8 +14,8 @@ advocaciamandarodrigues.org e advocaciamandarodrigues.online redirecionam para o
       do site .com. O .htaccess do site já redireciona os dois para o .com.
    b) Se forem sites separados: na public_html de cada um, envie só o arquivo
       "redirecionar-org-online/.htaccess".
-5. E-mail: crie a caixa contato@advocaciamandarodrigues.com (hPanel > E-mails). Ela é o remetente do
-   formulário (evita spam). As mensagens chegam em faj.atendimento@gmail.com (enviar.php).
+5. E-mail: as mensagens do formulário vão para o e-mail do cartão, faj.atendimento@gmail.com
+   (enviar.php). Não precisa criar caixa de e-mail no domínio. Confira a pasta de spam na primeira mensagem.
 6. Google: envie https://advocaciamandarodrigues.com/sitemap.xml no Google Search Console.
 
 Lembrete: o número de inscrição na OAB é obrigatório na publicidade da advocacia — inclua no rodapé

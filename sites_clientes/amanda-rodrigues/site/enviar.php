@@ -4,14 +4,15 @@
  * Funciona na hospedagem Hostinger (PHP com função mail()).
  *
  * CONFIGURAR:
- *  - $destino: e-mail que recebe as mensagens.
- *  - $remetente: use um e-mail DO SEU DOMÍNIO (ex.: contato@seudominio.com.br),
- *    criado no painel da Hostinger. Isso evita que a mensagem caia no spam.
+ *  - $destino: e-mail que recebe as mensagens (o e-mail do cartão da advogada).
+ *  - $remetente: vazio = usa o remetente padrão da hospedagem (não precisa criar caixa de e-mail).
+ *    Se um dia criar um e-mail do domínio (ex.: contato@advocaciamandarodrigues.com), coloque aqui:
+ *    ajuda a mensagem não cair no spam.
  */
 header('Content-Type: application/json; charset=utf-8');
 
 $destino   = 'faj.atendimento@gmail.com';
-$remetente = 'contato@advocaciamandarodrigues.com'; // crie esta caixa de e-mail no hPanel (evita cair no spam)
+$remetente = '';   // vazio: remetente padrão da hospedagem
 $assunto   = 'Novo contato pelo site - Amanda Rodrigues Advocacia';
 
 function responder($ok, $erro = '') {
@@ -50,7 +51,7 @@ $corpo .= "Nome: {$nome}\nTelefone: {$telefone}\nE-mail: {$email}\n\n";
 $corpo .= "Mensagem:\n{$mensagem}\n\n";
 $corpo .= "Consentimento LGPD: sim\nData: " . date('d/m/Y H:i') . "\n";
 
-$cabecalhos  = "From: Site Amanda Rodrigues <{$remetente}>\r\n";
+$cabecalhos  = $remetente !== '' ? "From: Site Amanda Rodrigues <{$remetente}>\r\n" : '';
 $cabecalhos .= "Reply-To: {$nome} <{$email}>\r\n";
 $cabecalhos .= "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\n";
 
