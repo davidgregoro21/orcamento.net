@@ -1,0 +1,46 @@
+# AMANDA RODRIGUES ADVOCACIA — configurações Apache/LiteSpeed (Hostinger)
+# Domínio principal: https://advocaciamandarodrigues.com
+# advocaciamandarodrigues.org, advocaciamandarodrigues.online e o www redirecionam para ele (301, bom para o Google).
+
+ErrorDocument 404 /404.html
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Qualquer endereço que não seja exatamente advocaciamandarodrigues.com (www, .org, .online) vai para o .com
+  RewriteCond %{HTTP_HOST} !^advocaciamandarodrigues\.com$ [NC]
+  RewriteRule ^(.*)$ https://advocaciamandarodrigues.com/$1 [L,R=301]
+  # Força HTTPS (ative o SSL gratuito no hPanel antes de publicar)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^(.*)$ https://advocaciamandarodrigues.com/$1 [L,R=301]
+  # Arquivos internos que não precisam ficar públicos
+  RewriteRule ^LEIA-ME\.txt$ - [F,L]
+</IfModule>
+
+# Compressão
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json application/xml
+</IfModule>
+
+# Cache de arquivos estáticos
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Segurança básica
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+</IfModule>

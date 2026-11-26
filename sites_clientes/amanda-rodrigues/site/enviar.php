@@ -11,7 +11,7 @@
 header('Content-Type: application/json; charset=utf-8');
 
 $destino   = 'faj.atendimento@gmail.com';
-$remetente = 'contato@seudominio.com.br'; // SUBSTITUIR pelo e-mail do domínio
+$remetente = 'contato@advocaciamandarodrigues.com'; // crie esta caixa de e-mail no hPanel (evita cair no spam)
 $assunto   = 'Novo contato pelo site - Amanda Rodrigues Advocacia';
 
 function responder($ok, $erro = '') {

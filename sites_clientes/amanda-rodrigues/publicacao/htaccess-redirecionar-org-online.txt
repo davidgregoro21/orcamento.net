@@ -1,0 +1,6 @@
+# Use SOMENTE se o .org ou o .online estiverem como sites separados na Hostinger (cada um com a sua public_html).
+# Coloque este arquivo sozinho na public_html desse domínio: tudo vai para o site principal (.com).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(.*)$ https://advocaciamandarodrigues.com/$1 [L,R=301]
+</IfModule>

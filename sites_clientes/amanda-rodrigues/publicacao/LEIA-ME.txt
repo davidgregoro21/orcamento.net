@@ -1,0 +1,22 @@
+AMANDA RODRIGUES ADVOCACIA — publicação nos domínios próprios
+==============================================================
+Domínio principal: https://advocaciamandarodrigues.com
+advocaciamandarodrigues.org e advocaciamandarodrigues.online redirecionam para o .com.
+
+1. hPanel > Sites: crie o site do domínio advocaciamandarodrigues.com.
+2. Gerenciador de Arquivos > public_html do .com: envie o CONTEÚDO da pasta
+   "site-amanda-rodrigues" (index.html, assets/, enviar.php, .htaccess...), não a pasta em si.
+   Dica: envie o .zip, clique em Extrair com destino na própria public_html e depois mova o conteúdo
+   da pasta "site-amanda-rodrigues" para a public_html.
+3. hPanel > Segurança > SSL: ative o SSL gratuito para o .com (e para .org e .online).
+4. .org e .online — escolha UM jeito:
+   a) Recomendado: hPanel > Domínios > adicione o .org e o .online como "domínio estacionado" (parked/alias)
+      do site .com. O .htaccess do site já redireciona os dois para o .com.
+   b) Se forem sites separados: na public_html de cada um, envie só o arquivo
+      "redirecionar-org-online/.htaccess".
+5. E-mail: crie a caixa contato@advocaciamandarodrigues.com (hPanel > E-mails). Ela é o remetente do
+   formulário (evita spam). As mensagens chegam em faj.atendimento@gmail.com (enviar.php).
+6. Google: envie https://advocaciamandarodrigues.com/sitemap.xml no Google Search Console.
+
+Lembrete: o número de inscrição na OAB é obrigatório na publicidade da advocacia — inclua no rodapé
+quando tiver (index.html, procure "footer-role").
